@@ -1,0 +1,21 @@
+{
+  "general": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "The page you are looking for could not be found."
+    }
+  },
+  "header": {
+    "cart": "Cart"
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable"
+  },
+  "footer": {
+    "about": "About",
+    "contact": "Contact",
+    "quick_links": "Quick Links"
+  }
+}

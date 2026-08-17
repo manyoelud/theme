@@ -1,0 +1,29 @@
+<div class="page-not-found">
+  <div class="container">
+    <h1>{{ 'general.404.title' | t }}</h1>
+    <p>{{ 'general.404.subtext' | t }}</p>
+    <a href="/" class="button button-primary">{{ 'general.back_home' | t: 'Return Home' }}</a>
+  </div>
+</div>
+
+<style>
+.page-not-found {
+  text-align: center;
+  padding: 4rem 2rem;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-not-found h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.page-not-found p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+</style>

@@ -1,0 +1,84 @@
+{% schema
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "shop_name",
+      "label": "Store name"
+    }
+  ]
+}
+{% endschema %}
+
+<header class="site-header">
+  <div class="header-content">
+    <div class="logo">
+      <a href="/">
+        {{ shop.name }}
+      </a>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        {% for link in linklists.main-menu.links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="/cart" class="cart-link">
+        Cart ({{ cart.item_count }})
+      </a>
+    </div>
+  </div>
+</header>
+
+{% stylesheet %}
+.site-header {
+  background-color: {{ settings.colors_background }};
+  color: {{ settings.colors_primary_text }};
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: {{ settings.colors_primary_text }};
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: {{ settings.colors_primary_text }};
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.cart-link {
+  text-decoration: none;
+  color: {{ settings.colors_accent }};
+  font-weight: bold;
+}
+{% endstylesheet %}

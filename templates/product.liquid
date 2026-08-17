@@ -1,0 +1,99 @@
+<div class="product-page">
+  <div class="container">
+    <div class="product-content">
+      <div class="product-images">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | img_url: '500x500' }}" alt="{{ product.title }}">
+        {% endif %}
+      </div>
+
+      <div class="product-details">
+        <h1>{{ product.title }}</h1>
+        
+        {% if product.description %}
+          <div class="product-description">
+            {{ product.description }}
+          </div>
+        {% endif %}
+
+        <div class="product-pricing">
+          {% if product.available %}
+            <span class="price">{{ product.price | money }}</span>
+          {% else %}
+            <span class="sold-out">Sold out</span>
+          {% endif %}
+        </div>
+
+        {% if product.available %}
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+            <input type="number" name="quantity" value="1" min="1">
+            <button type="submit" class="button button-primary">Add to Cart</button>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.product-page {
+  padding: 2rem 0;
+}
+
+.product-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-images {
+  position: sticky;
+  top: 2rem;
+}
+
+.product-images img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.product-details h1 {
+  margin-bottom: 1rem;
+}
+
+.product-description {
+  margin: 1.5rem 0;
+  color: #666;
+}
+
+.product-pricing {
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+input[type="number"] {
+  width: 80px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .product-content {
+    grid-template-columns: 1fr;
+  }
+
+  .product-images {
+    position: static;
+  }
+}
+</style>
